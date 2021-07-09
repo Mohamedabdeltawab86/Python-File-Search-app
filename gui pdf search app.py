@@ -1,7 +1,9 @@
 # TODO import modules
 from tkinter import *
 import os
+import timeit
 
+start = timeit.default_timer()
 # TODO create basic gui
 root = Tk()
 root.title("Everything")
@@ -10,7 +12,7 @@ root.geometry("1020x720")
 
 # TODO indexing pdf file in a directory
 all_files = [os.path.join(file) for root, directory, files in os.walk(
-    r"C:\Users\TECHNO\Desktop") for file in files if file.endswith('.pdf')]
+    r"E:") for file in files if file.endswith('.pdf')]
 
 
 # TODO update the listbox
@@ -44,8 +46,12 @@ def check(event):
 entry_box = Entry(root, width=400)
 entry_box.pack(padx=5)
 
+end = timeit.default_timer()
+duration = (end-start)
+
+
 # TODO create a label showing the number of files
-label = Label(root, anchor='sw', justify="left", text=f'Number of files {len(all_files)}...')
+label = Label(root, anchor='sw', justify="left", text=f'Number of files {len(all_files)}... indexed in {round(duration, 2)}')
 label.pack(fill='both')
 
 # TODO create the listbox
@@ -67,3 +73,4 @@ entry_box.bind("<KeyRelease>", check)
 
 # TODO run the gui
 root.mainloop()
+

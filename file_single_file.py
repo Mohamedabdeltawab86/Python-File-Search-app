@@ -1,4 +1,7 @@
 import os
+import timeit
+
+start = timeit.default_timer()
 
 
 def find_file(filename):
@@ -10,3 +13,6 @@ def find_file(filename):
 
 
 print(find_file("musculoskeletal FINAL2.xls"))
+
+end = timeit.default_timer()
+print(end-start)
